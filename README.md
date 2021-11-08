@@ -4,6 +4,8 @@ description: 除了前端，别的啥都想学！
 
 # 钓鱼-养狗
 
+[博客地址](https://tangjian1891.gitbook.io/tangjian-blog/)
+
 做饭：trying
 
 钓鱼：等退休了才可以！
