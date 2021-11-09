@@ -19,7 +19,7 @@
 
 ## 基础知识
 
-* [web安全/攻击](ji-chu-zhi-shi/web-an-quan-gong-ji.md)
+* [web安全/防御/攻击](ji-chu-zhi-shi/web-an-quan-fang-yu-gong-ji.md)
 * [浏览器相关](ji-chu-zhi-shi/liu-lan-qi-xiang-guan.md)
 * [cookie和session](ji-chu-zhi-shi/cookie-and-session.md)
 

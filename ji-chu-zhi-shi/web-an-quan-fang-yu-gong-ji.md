@@ -1,4 +1,4 @@
-# web安全/攻击
+# web安全/防御/攻击
 
 ### xss
 
@@ -41,12 +41,17 @@ function escape(str) {
 
 白名单：自定义规则保留一部分属性，例如处理富文本，保留标签样式.推荐使用js-xss
 
-### 注意点:
+### xss注意点:
 
-服务端渲染注意清洗渲染的html字符串。&#x20;
-
-客户端由于innerHTML的帮助，不太担心script标签，但是需要注意使用img,a标签中的onerro,onload,href等js执行事件。
-
-style标签中的background-image:url('javascript:...')
+1. 服务端渲染注意清洗渲染的html字符串。&#x20;
+2. 客户端由于innerHTML的帮助，不太担心script标签，但是需要注意使用img,a标签中的onerro,onload,href等js执行事件。
+3. 启用CSP内容安全策略(Content Security Policy)。同源加载资源，只允许HTTPS等
+4. Cookie 设置 HttpOnly ，防御登录态被js盗取
 
 > 用户输入的文本需要进行过滤再入库。除非可信，不然不可贸然渲染到页面中。
+
+### CSRF
+
+跨站请求伪造(Cross Site Request Forgery)利用用户已登录的身份，在用户不知情的情况下，利用用户登录状态完成非法操作
+
+特点:
