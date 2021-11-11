@@ -27,6 +27,7 @@
 
 ***
 
+* [git](git.md)
 * [vscode软件](vscode-ruan-jian.md)
 * [nvm](nvm.md)
 
