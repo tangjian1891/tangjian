@@ -15,6 +15,7 @@
 
 ## node
 
+* [typescript](node/typescript.md)
 * [node](node/node.md)
 
 ## 基础知识
