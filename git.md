@@ -1,4 +1,59 @@
+---
+description: origin master是远程分支    origin/master是远程分支的指针，需要fetch手动更新
+---
+
 # git
+
+### 获取仓库
+
+```
+git init            将尚未进行版本控制的目录转化为Git仓库
+git clone <url>     克隆已有的仓库
+```
+
+仓库中的每个文件，只有两种状态。 **已跟踪** 或 **未跟踪**，**已跟踪**就是git知道的文件。
+
+```
+git add README        指定追踪README文件,并放入暂存区staged
+git add .              递归追中当前目录下的所有文件staged
+
+git commit -m        提交更新暂存区的代码，此命令需要保证暂存区内至少有文件内容,否则需要git add
+如果你没有写-m注释，会强制进入vim编辑模式。此时在上面输入，按i进入编辑模式,:wq退出,:wq!强退。
+
+git status -s        简短查看文件状态？？是未追中的，红色的是未放入暂存的
+
+git log                查看提交历史
+```
+
+远程仓库
+
+```
+git remote -v     查看远程仓库，简写与其对应的URL
+
+git remote add <shortname> <url>    手动添加一个新的Git仓库,shortname一般都是origin
+
+查看分支相关
+git branch        查看本地所有分支，当前所属分支
+git branch -a        查看本地和远程所有分支
+git branch -vv        查看本地与远程分支的追踪状态。方便git pull,git push简写
+
+fetch获取,获取远程仓库的信息(仅仅是获取已追踪的分支)。
+git fetch <remote>       从远程仓库中获取信息，移动对应的origin/<branch>指针，不会合并修改。
+
+推送
+git push <remote> <branch>       推送分支
+git push origin dev_tangjian_feat              将本地分支推送到远程的同名分支上
+git push origin dev_tangjian_feat:dev_branch    将本地分支推送到远程的dev_branch上，会出现一个指针origin/dev_btranch
+
+
+追踪分支(从一个远程分支检出一个本地分支会自动跟踪，也就是upstream"上游分支")
+ git branch --set-upstream-to origin/dev_tangjian_feat dev_tangjian_feat 
+ git branch --unset-upstream    手动取消追踪
+ 
+ 手动检出远程分支(会自动追踪)
+git checkout origin/hahaha --track        检出一个远程分支并追踪 
+ 
+```
 
 ### 操作
 
@@ -31,6 +86,38 @@ git reset HEAD   在当前节点重置，可以暂存区的内容取出放入更
 git reset master  未分离HEAD时，master分支就是HEAD，与1一致
 git reset HEAD~1  回退1个提交，这里使用git reset master~1同理，后面只用HEAD演示
 git reset e830a3b 根据hash回退到指定的commit。
+```
+
+### 推送/追踪/查看本地对应远程
+
+#### 已追踪的分支，可以直接push推送/pull拉取
+
+git pull \<remote> \<branch>
+
+```
+git push
+```
+
+
+
+如果失败了，并且说这个分支没有upstream上游分支，就是说此分支没有追踪远程分支，不允许直接推，可以选择手动指定远程分支推送
+
+#### 手动追踪
+
+```
+ git branch --set-upstream-to origin/dev_tangjian_feat dev_tangjian_feat
+```
+
+#### 手动取消追踪
+
+```
+git branch --unset-upstream
+```
+
+#### 查看本地分支与远程分支对应情况
+
+```
+git branch -vv
 ```
 
 
