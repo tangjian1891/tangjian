@@ -47,13 +47,42 @@ git push origin dev_tangjian_feat:dev_branch    将本地分支推送到远程�
 
 
 追踪分支(从一个远程分支检出一个本地分支会自动跟踪，也就是upstream"上游分支")
- git branch --set-upstream-to origin/dev_tangjian_feat dev_tangjian_feat 
+git branch -u origin/dev_tangjian_feat   追踪指针
+ git branch --set-upstream-to origin/dev_tangjian_feat dev_tangjian_feat  （全拼）
  git branch --unset-upstream    手动取消追踪
  
  手动检出远程分支(会自动追踪)
 git checkout origin/hahaha --track        检出一个远程分支并追踪 
+
+删除远程分支
+git push origin  <branch>  -d   删除某个远程分支
+git branch <branch> -d   删除本地分支
+git branch <branch>  -D   强制删除，无论状态如何  --delete --force
+
+整合分支
+编辑
+
+查看HEAD记录,优化时间显示
+git reflog show --date=iso
+git reflog show --date=iso test   查看指定分支的记录。这个好用，丢失分支大概率会被merge一次
  
 ```
+
+### 找回分支(本地)
+
+本地分支被删除后，从git reflog上看，分支名消失，只能看到HEAD@{12}，此时可从相关分支定位范围，找到最后一次分支的commit。例如
+
+08821ef HEAD@{10}:commit 修复某某bug。    此记录为删除分支的最后一次提交
+
+或者记住分支名称，因为大多数分支最终会merge into到别的分支上,寻找一下
+
+08821ef HEAD@{8}:merge **test**:Fast-forward
+
+55813db(origin/master) HEAD@{9} checkout ：moving from **test** to master
+
+最后使用 git checkout -b \<branchName>  08821ef   即可
+
+###
 
 ### 操作
 
