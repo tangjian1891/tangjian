@@ -6,6 +6,8 @@ description: origin master是远程分支    origin/master是远程分支的指�
 
 远程跟踪分支是远程分支状态的引用。它们是你无法移动的本地引用。\<origin>/\<branch> 只要fetch后，就会同步\<origin> \<branch>到\<origin>/\<branch>引用上面，包括你想克隆远程分支的，实际上克隆的是引用，也就是\<origin>/\<branch>
 
+## 一定注意:主分支上不要rebase。不要merge test分支。
+
 ### 初始化/仓库相关
 
 ```
