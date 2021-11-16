@@ -6,11 +6,13 @@ description: origin master是远程分支    origin/master是远程分支的指�
 
 远程跟踪分支是远程分支状态的引用。它们是你无法移动的本地引用。\<origin>/\<branch> 只要fetch后，就会同步\<origin> \<branch>到\<origin>/\<branch>引用上面，包括你想克隆远程分支的，实际上克隆的是引用，也就是\<origin>/\<branch>
 
-### 获取仓库
+### 初始化/仓库相关
 
 ```
 git init            将尚未进行版本控制的目录转化为Git仓库
 git clone <url>     克隆已有的仓库
+git remote -v     查看远程仓库，简写与其对应的URL
+git remote add <shortname> <url>    手动添加一个新的Git仓库,shortname一般都是origin
 ```
 
 仓库中的每个文件，只有两种状态。 **已跟踪** 或 **未跟踪**，**已跟踪**就是git知道的文件。
@@ -21,18 +23,6 @@ git add .              递归追中当前目录下的所有文件staged
 
 git commit -m        提交更新暂存区的代码，此命令需要保证暂存区内至少有文件内容,否则需要git add
 如果你没有写-m注释，会强制进入vim编辑模式。此时在上面输入，按i进入编辑模式,:wq退出,:wq!强退。
-
-git status -s        简短查看文件状态？？是未追中的，红色的是未放入暂存的
-
-git log                查看提交历史
-```
-
-远程仓库
-
-```
-git remote -v     查看远程仓库，简写与其对应的URL
-
-git remote add <shortname> <url>    手动添加一个新的Git仓库,shortname一般都是origin
 
 
 ```
@@ -91,15 +81,18 @@ git branch --unset-upstream        手动取消本地分支的上游追踪。例
 ### 查询
 
 ```
-查看HEAD操作commit等记录
-git reflog show --date=iso
-git reflog show --date=iso test   查看指定分支的记录。这个好用，丢失分支大概率会被merge一次
+普通查看
+git status -s        简短查看文件状态？？是未追中的，红色的是未放入暂存的
+git log              查看提交历史
 
 查看分支
 git branch        查看本地所有分支，当前所属分支
 git branch -a     查看本地和远程所有分支,--all
 git branch -vv    本地分支与远程分支追踪状态
 
+查看HEAD操作commit等记录
+git reflog show --date=iso
+git reflog show --date=iso test   查看指定分支的记录。这个好用，丢失分支大概率会被merge一次
 
 ```
 
