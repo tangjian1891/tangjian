@@ -72,7 +72,7 @@ git push <remote> <branch>    推送到远程。没有的话，会新建，但�
 
 
 手动增加追踪
-git branch -u <remote>/<branch>       给当前分支设置一个上游upstream追踪分支,追踪引用即可. -u或--set-upstream-tp
+git branch -u <remote>/<branch>       给当前分支设置一个上游upstream追踪分支,追踪引用即可. -u或--set-upstream-to
 
 ```
 
