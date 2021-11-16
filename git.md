@@ -4,6 +4,8 @@ description: origin master是远程分支    origin/master是远程分支的指�
 
 # git
 
+远程跟踪分支是远程分支状态的引用。它们是你无法移动的本地引用。\<origin>/\<branch> 只要fetch后，就会同步\<origin> \<branch>到\<origin>/\<branch>引用上面，包括你想克隆远程分支的，实际上克隆的是引用，也就是\<origin>/\<branch>
+
 ### 获取仓库
 
 ```
@@ -32,75 +34,76 @@ git remote -v     查看远程仓库，简写与其对应的URL
 
 git remote add <shortname> <url>    手动添加一个新的Git仓库,shortname一般都是origin
 
-查看分支相关
-git branch        查看本地所有分支，当前所属分支
-git branch -a        查看本地和远程所有分支
-git branch -vv        查看本地与远程分支的追踪状态。方便git pull,git push简写
 
-fetch获取,获取远程仓库的信息(仅仅是获取已追踪的分支)。
-git fetch <remote>       从远程仓库中获取信息，移动对应的origin/<branch>指针，不会合并修改。
-
-推送
-git push <remote> <branch>       推送分支
-git push origin dev_tangjian_feat              将本地分支推送到远程的同名分支上
-git push origin dev_tangjian_feat:dev_branch    将本地分支推送到远程的dev_branch上，会出现一个指针origin/dev_btranch
-
-
-追踪分支(从一个远程分支检出一个本地分支会自动跟踪，也就是upstream"上游分支")
-git branch -u origin/dev_tangjian_feat   追踪指针
- git branch --set-upstream-to origin/dev_tangjian_feat dev_tangjian_feat  （全拼）
- git branch --unset-upstream    手动取消追踪
- 
- 手动检出远程分支(会自动追踪)
-git checkout origin/hahaha --track        检出一个远程分支并追踪 
-
-删除远程分支
-git push origin  <branch>  -d   删除某个远程分支
-git branch <branch> -d   删除本地分支
-git branch <branch>  -D   强制删除，无论状态如何  --delete --force
-
-整合分支
-编辑
-
-查看HEAD记录,优化时间显示
-git reflog show --date=iso
-git reflog show --date=iso test   查看指定分支的记录。这个好用，丢失分支大概率会被merge一次
- 
 ```
 
-### 找回分支(本地)
+### fetch与pull
 
-本地分支被删除后，从git reflog上看，分支名消失，只能看到HEAD@{12}，此时可从相关分支定位范围，找到最后一次分支的commit。例如
+fetch仅仅是将\<remote> \<branch>拉到\<origin>/\<branch>引用上，这样你就能用git branch -vv看到追踪的引用与本地的差异了。**fetch很安全，不会合并。**
 
-08821ef HEAD@{10}:commit 修复某某bug。    此记录为删除分支的最后一次提交
+pull是fetch+merge的升级版，需要本地分支有追踪才可以。
 
-或者记住分支名称，因为大多数分支最终会merge into到别的分支上,寻找一下
+```
+git pull                          分支如果有track追踪，那么可以直接简写，否则只能使用下面全拼
+git pull <remote> <origin>        拉取一个远程分支到引用上，并merge一下这个引用
 
-08821ef HEAD@{8}:merge **test**:Fast-forward
+git pull origin master        你当前所处非master，拉了一下远程，这会更新远程的引用，并merge master
+一般来说，都是本地拉对应的追踪远程，然后自动merge一下远程(引用)，当然想dev_tangjian_feat需要merge一下master的情况，此时可以直接拉取对应的origin master
 
-55813db(origin/master) HEAD@{9} checkout ：moving from **test** to master
+```
 
-最后使用 git checkout -b \<branchName>  08821ef   即可
+### 增加
 
-###
+```
+推送
+git push                       需要有追踪的分支，会自动推送
+git push <remote> <branch>    将本地分支内容，指定推送到远程同名分支
+git push <remote> <branch本地:branch远程>   指定本地某个分支，推送到远程的某个，一般不这么干
 
-### 操作
+本地分支新增
+git branch <branch>        在当前所属分支上创建一个分支
+git checkout -b <branch>    检出分支在当前所属分支上创建一个分支并切换到新建分支上
 
-#### 提交
+根据“远程”分支检出本地分支
+git checkout -b <branch> <remote>/<branch>       常用命名，会自动--track追踪
 
-git commit
+根据“本地”分支新增远程分支
+git push <remote> <branch>    推送到远程。没有的话，会新建，但不会追踪
 
-创建分支
 
-git branch \<your-branch-name>
+手动增加追踪
+git branch -u <remote>/<branch>       给当前分支设置一个上游upstream追踪分支,追踪引用即可. -u或--set-upstream-tp
 
-切换分支
+```
 
-git checkout \<your-branch-name>
+### 删除
 
-创建分支并切换
+```
+git branch -d <branch>        删除分支，仅针对已合并的分支
+git branch -D <branch>        强制删除本地分支，对于未merge fully的分支也能删
+git push -d <remote> <branch>    删除某个远程分支
+git push -D <remote> <branch>    强制删除某个远程分支 --delete --force
 
-git checkout -b \<your-branch-name>
+删除追踪
+git branch --unset-upstream        手动取消本地分支的上游追踪。例如远程分支被删除了，需要手动解除一下
+```
+
+### 查询
+
+```
+查看HEAD操作commit等记录
+git reflog show --date=iso
+git reflog show --date=iso test   查看指定分支的记录。这个好用，丢失分支大概率会被merge一次
+
+查看分支
+git branch        查看本地所有分支，当前所属分支
+git branch -a     查看本地和远程所有分支,--all
+git branch -vv    本地分支与远程分支追踪状态
+
+
+```
+
+
 
 ### git reset重置
 
@@ -117,47 +120,25 @@ git reset HEAD~1  回退1个提交，这里使用git reset master~1同理，后�
 git reset e830a3b 根据hash回退到指定的commit。
 ```
 
-### 推送/追踪/查看本地对应远程
+### 找回分支(本地)
 
-#### 已追踪的分支，可以直接push推送/pull拉取
+#### 本地分支被删除后，从git reflog上看，分支名消失，只能看到HEAD@{12}，此时可从相关分支定位范围，找到最后一次分支的commit。例如
 
-git pull \<remote> \<branch>
+08821ef HEAD@{10}:commit 修复某某bug。    此记录为删除分支的最后一次提交
 
-```
-git push
-```
+#### 或者记住分支名称，因为大多数分支最终会merge into到别的分支上,寻找一下
 
+08821ef HEAD@{8}:merge **test**:Fast-forward
 
+55813db(origin/master) HEAD@{9} checkout ：moving from **test** to master
 
-如果失败了，并且说这个分支没有upstream上游分支，就是说此分支没有追踪远程分支，不允许直接推，可以选择手动指定远程分支推送
+#### 找到切换分支也行，git reflog是可以记住分支的切换的,顺着切换的hash往上找
 
-#### 手动追踪
+checkout: moving from master to dev\_tangjian\_feat &#x20;
 
-```
- git branch --set-upstream-to origin/dev_tangjian_feat dev_tangjian_feat
-```
-
-#### 手动取消追踪
-
-```
-git branch --unset-upstream
-```
-
-#### 查看本地分支与远程分支对应情况
-
-```
-git branch -vv
-```
+最后使用 git checkout -b \<branchName>  08821ef   即可
 
 
-
-### 分支合并
-
-把本地分支合并到test，把本地分支合并到bugFix分支。
-
-切换到test分支，merge一下本地分支。
-
-也就是说，永远不要merge test。test代码不能污染其余分支
 
 ### 变基
 
