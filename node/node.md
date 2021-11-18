@@ -103,7 +103,7 @@ fr.readAsDataURL(Blob);//DataURL,如果是二进制数据，会转为base64
 
 前缀为data:协议的URL，允许浏览器解析其中的内容。
 
-格式规则:       data:\[MIME]\[;base64],\<data>
+格式规则:       data:\[MIME]\[;base64],\<data>  或者 data:;,\<data>普通文本
 
 | 规则         | 描述      | 是否必选。默认值                        |
 | ---------- | ------- | ------------------------------- |
