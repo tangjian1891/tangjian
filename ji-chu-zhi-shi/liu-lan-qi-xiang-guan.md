@@ -38,3 +38,28 @@ defer延迟执行：会在页面dom与css加载解析，且所有css资源加载
 
 
 
+### encodeURL与encodeURIComponent
+
+总结:
+
+1.访问的地址不要用encodeURIComponent加密，会导致地址中的:/被转义，浏览器无法访问(https://www.baidu.com/)
+
+2.后缀query参数上如果有特殊符号，需要使用encodeURIComponent转义，比如回调参数地址,不转义则会被浏览器解析。（key=你好\&returnURL=https://www.baidu.com/）
+
+```
+// encodeURL不会转义;,/?:@&=+$ ,这些存在于链接之上.所以对整个链接进行 encodeURIComponent 会导致无法访问,需要手动解码才行
+// 对于链接地址中的字符，我们希望被浏览器解析。https://www.baidu.com/
+// 对于query参数，我们希望不被解析。
+let baidu = "https://www.baidu.com/";
+console.log(encodeURI(baidu)); //https://www.baidu.com/
+console.log(encodeURIComponent(baidu)); //https%3A%2F%2Fwww.baidu.com%2F  把: / 转义了，导致浏览器无法识别
+console.log("-----------------------------");
+let baiduQuery = "https://www.baidu.com?key=你好&v=https://www.baidu.com/";
+console.log(encodeURI(baiduQuery)); //这种会导致 query参数丢失
+console.log(encodeURIComponent(baiduQuery)); //这种会导致整体url无法解析
+
+// 最佳做法:仅对?后面query参数做统一encodeURIComponent，获取到后，统一decodeURIComponent即可。如果愿意，你可以对query参数的单个value使用decodeURIComponent
+let extraQuery = "key=你好&v=https://www.baidu.com/";
+let encodeQuery = encodeURIComponent(extraQuery);
+console.log(`${baidu}?${encodeQuery}`); //最佳做法，拼接而成
+```
