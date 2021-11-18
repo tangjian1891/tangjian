@@ -183,15 +183,18 @@ app.use(formidableMiddleware()); //使用了中间件，就不能使用req.on('d
 const fm = new FormData();
 // 一定要设定responseType:blob，否则浏览器当字符串解析了
 axios.request({ url: "/getUpload", method: "post", responseType: "blob" }).then((res) => {
+  const headers = res.headers;//文件名称在请求头中
   // 注意blob接收的是一个二进制数组，包一下
   const blob = new Blob([res.data], {
     type: "image/jpg",
   });
+  const filename = decodeURI(headers["content-disposition"].split("filename=")[1])
   const href = URL.createObjectURL(blob);//转换为url
   const a = document.createElement("a");
   a.href = href;
-  a.download = "name.xlsx";//文件名称
+  a.download = filename || "name.xlsx";//文件名称
   a.click();
+  URL.revokeObjectURL(href);//释放内存
 });
 ```
 
