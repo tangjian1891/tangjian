@@ -14,15 +14,25 @@ ArrayBuffer 二进制数组，是对内存的连续引用，不是数组，但�
 
 1.ArrayBuffer:代表内存中有一段二进制数据。不能直接操作ArrayBuffer，要用“视图”操作
 
-2.TypedArray:属于视图:一共有9中，Uint8Array,Uint16Array,Int32Array...等。（相对简单类型的读写）
+2.DataView:属于视图:可自定义格式，例如:第一个单位为Uint8，第二个单位为Uint16。（更为灵活的读写）
 
-3.DataView:属于视图:可自定义格式，例如:第一个单位为Uint8，第二个单位为Uint16。（更为灵活的读写）
+3.TypedArray:属于视图:一共有9中，Uint8Array,Uint16Array,Int32Array...等。（相对简单类型的读写）
 
 #### ArrayBuffer:构造函数。参数只能是开辟的空间字节长度。
 
 ```
 //参数是所需内存大小。 在内存中生成了一段32字节的内存区域，每个字节默认是0。
 const buf = new ArrayBuffer(32); //内部可查看多种“视图”
+```
+
+#### DataView:视图，相当于不需要设置精准类型。动态的、。
+
+TypedArray实际上是一组构造函数的总称,因为是固定。所以很多。 好比java的“申明”类型和javascript的“var申明”
+
+```
+const buf = new ArrayBuffer(32);//32个字节，仅仅是开辟空间而已
+const dataView = new DataView(buf);//将内存放入视图中
+console.log(dataView, dataView.byteLength);//object, 32
 ```
 
 #### TypedArray:视图，可操作“二进制数组”。参数：接收ArrayBuffer实例作为参数||普通数组作为参数，直接分配内存底层生成ArrayBuffer实例。（强大功能）
@@ -35,15 +45,7 @@ const x1 = new Int32Array(buf);//一个单位占32位=4字节。所以有[0,0,0,
 const x2 = new Uint8Array(buf);//一个单位占8位=1字节，所以有[0,0,0,0,0,0,0，0，...(一共32个0)]
 ```
 
-#### DataView:视图，相当于不需要设置精准类型。动态的、。
 
-TypedArray实际上是一组构造函数的总称,因为是固定。所以很多。 好比java的“申明”类型和javascript的“var申明”
-
-```
-const buf = new ArrayBuffer(32);//32个字节，仅仅是开辟空间而已
-const dataView = new DataView(buf);//将内存放入视图中
-console.log(dataView, dataView.byteLength);//object, 32
-```
 
 #### ArrayBuffer与字符串相互转换
 
