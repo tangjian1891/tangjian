@@ -26,7 +26,7 @@
 汉字"中",20013。在16位内，使的UTF-8就是3字节模板。转化为二进制100111000101101，一点点往模板的x里面套。从后向前。11100100 10111000 10101101,最前面不够的x用0放入。 这个东西，计算机就能看懂了,下面就告诉计算机一个模板规则，UTF-8的，这样上面的二进制对应的就是二进制数组(这数组认10进制了)\[228,184,173]。这样就能从二进制数组里面解出"中"字。
 
 ```
-//中-》 [231, 160, 129] 
+//使用DataView,手动设置值  中-》 [231, 160, 129] 
  const bf = new ArrayBuffer(3);//设置大小
  const view = new DataView(bf);//创建视图
  view.setUint8(0,228);
@@ -34,4 +34,16 @@
  view.setUint8(2,173);
  const de = decode.decode(bf);//解析
  console.log(de);
+ 
+ //使用TypeView中的Uint8创建,可以直接接受一个数组
+ const uint8 = new Uint8Array([231, 160, 129]);
+ const de = decode.decode(uint8);
+ console.log(de);
 ```
+
+### Blob
+
+不可变，原始数据的类文件对象。数据可以按文本或二进制格式读取。(字节流，字符流都可以)
+
+可选参数(ArrayBuffer,TypeView,Blob,DOMString),这里的DOMString是一个UTF-16的字符串。
+
