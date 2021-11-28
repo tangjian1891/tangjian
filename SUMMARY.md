@@ -16,6 +16,7 @@
 ## node
 
 * [typescript](node/typescript.md)
+* [Babel](node/babel.md)
 * [编码/字节流](node/bian-ma-zi-jie-liu.md)
 * [node](node/node.md)
 
