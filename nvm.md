@@ -14,9 +14,10 @@ description: >-
 
 ### 设置nvm镜像全局
 
-> nvm node\_mirror [https://npm.taobao.org/mirrors/node/](https://npm.taobao.org/mirrors/node/)
->
-> nvm npm\_mirror [https://npm.taobao.org/mirrors/npm/](https://npm.taobao.org/mirrors/npm/)
+```
+nvm node_mirror https://npm.taobao.org/mirrors/node/
+nvm npm_mirror https://npm.taobao.org/mirrors/npm/
+```
 
 ### 常用指令
 
@@ -29,18 +30,20 @@ description: >-
 5. nvm install \[version] 安装指定版本
 6. nvm uninstall \[version] 卸载指定版本
 
-然后是设置npm淘宝镜像\
-npm config set registry [http://registry.npm.taobao.org/](http://registry.npm.taobao.org)
-
 ### npm
 
 > node包管理自带npm版本，所以下载node后可直接使用npm。最新的node16->npm7,其余常规npm版本应该为6。
 
 设置npm镜像(强烈推荐)\
-常用指令:\
-1.npm get registry 查看当前的镜像源版本\
-2.npm config set registry [http://registry.npm.taobao.org/](http://registry.npm.taobao.org) 设置淘宝镜像\
-3.npm config set registry [https://registry.npmjs.org/](https://registry.npmjs.org) 换成官方镜像
+常用指令:
+
+1. npm get registry                                                                                   查看当前的镜像源版本
+2. npm config set registry http://registry.npm.taobao.org/                  设置淘宝镜像
+
+### Yarn
+
+1. yarn config get registry                                                                          查看当前的镜像源版本
+2. yarn config set registry https://registry.npm.taobao.org/                   设置淘宝镜像            &#x20;
 
 ### package.lock.json&#x20;
 
