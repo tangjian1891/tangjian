@@ -37,8 +37,32 @@ nvm npm_mirror https://npm.taobao.org/mirrors/npm/
 设置npm镜像(强烈推荐)\
 常用指令:
 
-1. npm get registry                                                                                   查看当前的镜像源版本
-2. npm config set registry http://registry.npm.taobao.org/                  设置淘宝镜像
+```
+npm get registry                                             查看当前的镜像源版本
+npm config set registry http://registry.npm.taobao.org/           设置淘宝镜像
+```
+
+发布操作
+
+```
+npm ls             查看当前目录下安装了哪些node包
+npm who            查看当前登录账号
+npm login          登录账号（切换到官方镜像源才可以）
+npm publish        发布包
+```
+
+查看路径
+
+```
+npm get prefix         查看node安装路径
+npm root -g            全局node包
+```
+
+清理缓存
+
+```
+npm cache clean -f
+```
 
 ### Yarn
 
