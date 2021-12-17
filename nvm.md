@@ -30,7 +30,7 @@ nvm npm_mirror https://npm.taobao.org/mirrors/npm/
 5. nvm install \[version] 安装指定版本
 6. nvm uninstall \[version] 卸载指定版本
 
-### npm
+### npm(适合安装全局包)
 
 > node包管理自带npm版本，所以下载node后可直接使用npm。最新的node16->npm7,其余常规npm版本应该为6。
 
@@ -39,7 +39,8 @@ nvm npm_mirror https://npm.taobao.org/mirrors/npm/
 
 ```
 npm get registry                                         查看当前的镜像源版本
-npm set registry https://registry.npmmirror.com          设置淘宝镜像
+npm set registry https://registry.npmmirror.com          设置淘宝镜像(好像直接兼容yarn)
+
 npm set registry https://registry.npmjs.org              设置为官方镜像
 ```
 
@@ -66,11 +67,12 @@ npm root -g            全局node包路径
 npm cache clean -f
 ```
 
-### Yarn
+### yarn(适合安装项目依赖)
 
 ```
 yarn config get registry 
-yarn config set registry https://registry.npmmirror.com       设置淘宝镜像   
+yarn config set registry https://registry.npmmirror.com       设置淘宝镜像（好像没用，不如设置npm的）
+   
 yarn config set registry https://registry.yarnpkg.com         切换为官方(好像没啥用)
 ```
 
