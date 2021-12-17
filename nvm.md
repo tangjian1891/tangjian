@@ -68,8 +68,11 @@ npm cache clean -f
 
 ### Yarn
 
-1. yarn config get registry                                                                          查看当前的镜像源版本
-2. yarn config set registry https://registry.npm.taobao.org/                   设置淘宝镜像            &#x20;
+```
+yarn config get registry 
+yarn config set registry https://registry.npmmirror.com       设置淘宝镜像   
+yarn config set registry https://registry.yarnpkg.com         切换为官方(好像没啥用)
+```
 
 ### package.lock.json&#x20;
 
