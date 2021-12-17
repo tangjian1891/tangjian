@@ -11,7 +11,7 @@ description: origin master是远程分支    origin/master是远程分支的指�
 ### 初始化/仓库相关
 
 ```
- ssh-keygen -t rsa -C "tangjian1891@163.com"                创建ssh-key
+ssh-keygen -t rsa -C "tangjian1891@163.com"                创建ssh-key
 git init            将尚未进行版本控制的目录转化为Git仓库
 git clone <url>     克隆已有的仓库
 git remote -v     查看远程仓库，简写与其对应的URL

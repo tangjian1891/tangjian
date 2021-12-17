@@ -30,6 +30,7 @@
 
 ***
 
+* [prettier/eslint/husky](prettier-eslint-husky.md)
 * [git](git.md)
 * [vscode软件](vscode-ruan-jian.md)
 * [nvm](nvm.md)
@@ -40,7 +41,7 @@
 * [Jenkins](fu-wu-qi-xiang-guan/jenkins.md)
 * [docker](fu-wu-qi-xiang-guan/docker.md)
 
-## 生活记录 <a href="dian-ying" id="dian-ying"></a>
+## 生活记录 <a href="#dian-ying" id="dian-ying"></a>
 
 * [厨师](dian-ying/chu-shi.md)
 * [看了哪些](dian-ying/kan-le-na-xie.md)
