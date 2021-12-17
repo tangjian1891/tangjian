@@ -38,14 +38,16 @@ nvm npm_mirror https://npm.taobao.org/mirrors/npm/
 常用指令:
 
 ```
-npm get registry                                             查看当前的镜像源版本
-npm config set registry http://registry.npm.taobao.org/           设置淘宝镜像
+npm get registry                                         查看当前的镜像源版本
+npm set registry https://registry.npmmirror.com          设置淘宝镜像
+npm set registry https://registry.npmjs.org              设置为官方镜像
 ```
 
 发布操作
 
 ```
-npm ls             查看当前目录下安装了哪些node包
+npm list           查看当前目录下安装了哪些node包
+npm list -g        查看全局node包
 npm who            查看当前登录账号
 npm login          登录账号（切换到官方镜像源才可以）
 npm publish        发布包
@@ -55,7 +57,7 @@ npm publish        发布包
 
 ```
 npm get prefix         查看node安装路径
-npm root -g            全局node包
+npm root -g            全局node包路径
 ```
 
 清理缓存
