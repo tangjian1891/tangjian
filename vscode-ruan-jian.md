@@ -6,7 +6,7 @@ description: 个人常用的一些vscode配置
 
 下载**System Installer全系统用户版本**
 
-C:\Users\Administrator\AppData\Roaming\Code\User**   配置所在路径，有snippets,sync之类**
+C:\Users\Administrator\AppData\Roaming\Code\User   **配置所在路径，有snippets,sync之类**
 
 全局settings.json
 
@@ -268,14 +268,6 @@ module.exports = {
 ```
 
 ### 常用软件（电脑）
-
-#### git
-
-创建ssh-key
-
-```
- ssh-keygen -t rsa -C "tangjian1891@163.com"
-```
 
 #### sourcetree
 
