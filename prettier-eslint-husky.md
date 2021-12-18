@@ -48,3 +48,6 @@ npm i prettier -D            //依赖增加
 "prettier": "prettier --write ."            //package/scripts脚本增加
 ```
 
+## eslint
+
+eslint有校验检查，修复的能力，但是一般来说
