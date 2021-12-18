@@ -38,16 +38,72 @@ public
 # 如果需要忽略某些内容，可以添加注释 // prettier-ignore
 ```
 
-### 工程化项目使用
+### script脚本
+
+npm i prettier -D
 
 ```
-//.prettierrc与.prettierignore配置文件增加
-
-npm i prettier -D            //依赖增加
-
-"prettier": "prettier --write ."            //package/scripts脚本增加
+  "scripts": {
+    "prettier": "prettier --write ."
+  },
 ```
 
 ## eslint
 
-eslint有校验检查，修复的能力，但是一般来说
+eslint有校验检查，修复的能力，但是一般来说我不希望修复那些与prettier相似的，避免冲突
+
+### .eslintrc.js
+
+```
+{
+  "env": {
+    //当前最高为2021   https://eslint.org/docs/user-guide/configuring/language-options#specifying-environments
+    "browser": true,
+    "node": true,
+    "es2021": true
+  },
+  // "global":{}, //定义全局变量，一般来说用不到
+  "parserOptions": {
+    "sourceType": "module" //允许esm模块的使用
+  },
+  "extends": ["eslint:recommended", "prettier"],
+  "rules": {}
+}
+
+```
+
+### .eslintignore
+
+```
+*.sh
+node_modules
+*.md
+*.woff
+*.ttf
+.vscode
+.idea
+dist
+/public
+/docs
+.husky
+.local
+/bin
+Dockerfile
+
+```
+
+### script脚本
+
+npm i eslint -D
+
+```
+  "scripts": {
+    "lint": "eslint src/**/*.{js,vue,ts} --fix",
+  },
+```
+
+## 融合eslint+prettier
+
+npm i eslint-config-prettier -D
+
+然后在.eslintrc.js文件中增加到extends扩展的最后面
