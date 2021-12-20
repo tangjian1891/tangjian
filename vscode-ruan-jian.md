@@ -6,7 +6,7 @@ description: 个人常用的一些vscode配置
 
 下载**System Installer全系统用户版本**
 
-C:\Users\Administrator\AppData\Roaming\Code\User**   配置所在路径，有snippets,sync之类**
+C:\Users\Administrator\AppData\Roaming\Code\User   **配置所在路径，有snippets,sync之类**
 
 全局settings.json
 
@@ -16,6 +16,8 @@ C:\Users\Administrator\AppData\Roaming\Code\User**   配置所在路径，有sni
 {
   "editor.tabSize": 2, //每个tab 几个空格
   "editor.fontSize": 18, //字体大小
+  "editor.bracketPairColorization.enabled": true,//括号对
+  "editor.guides.bracketPairs": "active",//括号对
   // vscode终端设置
   "terminal.integrated.profiles.windows": {
     "PowerShell": {
@@ -37,12 +39,11 @@ C:\Users\Administrator\AppData\Roaming\Code\User**   配置所在路径，有sni
   "terminal.integrated.defaultProfile.windows": "Windows PowerShell",
   // ------------上面为vscode本身配置---------
 
-  
   // ----------下面为插件的配置-------------
-  "workbench.iconTheme": "vscode-icons", //vscode 文件icon使用插件
-  "workbench.colorTheme": "One Dark Pro Darker", //vscode 主题插件
+  "workbench.iconTheme": "vscode-icons", //vscode 主题插件
+  "workbench.colorTheme": "One Dark Pro Darker", //颜色主题
 
-  "prettier.printWidth": 150,
+  "prettier.printWidth": 150,//除了最大行，其余全部采用默认即可
 
   "vetur.ignoreProjectWarning": true, //忽略vetur检测vetur.congig.js/ts配置信息提示
   "[vue]": {
@@ -50,15 +51,32 @@ C:\Users\Administrator\AppData\Roaming\Code\User**   配置所在路径，有sni
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.startupEditor": "none",
+  "commentTranslate.source": "Baidu",
+  "commentTranslate.targetLanguage": "zh-CN",
 }
-
 ```
 
 1. Chinese &#x20;
 2. Code Runner
 3. Auto Rename Tag
-4. Bracket Pair Colorizer 2
+4. Bracket Pair Colorizer 2（已废弃,vscode内置支持）
 5. Live Server
 6. Open in Browser
 7. GitLens — Git supercharged 可查看上次上提交
@@ -251,7 +269,6 @@ module.exports = {
 {
   "recommendations": [
     "formulahendry.auto-rename-tag",
-    "coenraads.bracket-pair-colorizer-2",
     "ms-ceintl.vscode-language-pack-zh-hans",
     "formulahendry.code-runner",
     "intellsmi.comment-translate",
@@ -268,14 +285,6 @@ module.exports = {
 ```
 
 ### 常用软件（电脑）
-
-#### git
-
-创建ssh-key
-
-```
- ssh-keygen -t rsa -C "tangjian1891@163.com"
-```
 
 #### sourcetree
 
