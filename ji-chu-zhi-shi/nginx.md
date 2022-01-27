@@ -12,6 +12,8 @@ nginx -s reload                                   重载nginx.conf配置
 
 可以start多次，进程会额外开启，但是关掉后，只能关掉最后一个批次的。其余的需要手动kill pid
 
+### 静态资源部署
+
 ```
 location [ = | ~ | ~* | ^~] uri {
 	...
@@ -26,13 +28,9 @@ location [ = | ~ | ~* | ^~] uri {
 
 如果 uri 包含正则表达式，则必须要有 `~` 或 `~*` 标志。
 
-例如:
-
-关于nginx的http.server.location配置，凡是以/结尾的，都是访问的文件夹，默认查询对应root下的index开头的文件，index.html index.htm index.php
-
+{% hint style="info" %}
 路径寻找拼接规则: root+location
-
-
+{% endhint %}
 
 ### 路径后面自动/说明
 
@@ -41,5 +39,20 @@ location [ = | ~ | ~* | ^~] uri {
 1. 首先根据约定URL尾部有/代表目录。会自动查找目录下得index.html等文件。
 2. 如果没有/代表用户明确想要得是文件。但是可能没有文件，此时会做目录检测，如果有目录且有index.html，那么就会返回，并且将浏览器上URL加上/
 
+### 单页面history模式
 
+为什么刷新一次就会404呢?
 
+因为按照url来说，确实无法匹配对应的路径文件，所以必须让nginx重新寻找我们的单页面index.html，匹配后vue-router会自动解析history。[配置文档](https://router.vuejs.org/zh/guide/essentials/history-mode.html#%E5%90%8E%E7%AB%AF%E9%85%8D%E7%BD%AE%E4%BE%8B%E5%AD%90)
+
+```
+location    / {
+  root html/www/dist;
+  try_files $uri $uri/ /index.html;
+}
+//一般项目都是部署在非根路径下
+location    /h5 {
+  root html/www/dist;
+  try_files $uri $uri/ /index.html;
+}
+```
