@@ -15,6 +15,7 @@
 
 ## node
 
+* [微信开发](node/wei-xin-kai-fa.md)
 * [typescript](node/typescript.md)
 * [Babel](node/babel.md)
 * [编码/字节流](node/bian-ma-zi-jie-liu.md)
