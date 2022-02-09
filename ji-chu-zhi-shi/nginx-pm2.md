@@ -1,4 +1,4 @@
-# nginx
+# nginx/pm2
 
 windows
 
@@ -55,4 +55,31 @@ location    /h5 {
   root html/www/dist;
   try_files $uri $uri/ /index.html;
 }
+```
+
+## PM2
+
+pm2是一个全局服务，可以帮助启动node应用程序。功能强大，统一管理。
+
+所有启动得应用程序，会有历史记录存在，可以方便下次直接启动。可以为同一个应用程序创建多个name启动记录，但是实际只能启动一个。
+
+```
+pm2 ls                显示所有进程状态，所有得历史记录
+pm2 start app.js       通过指定得路径， 启动/守护/监视 应用程序
+pm2 start 0            通过历史记录列表中得id  启动/守护/监视 应用程序
+
+pm2 stop 0     通过id停止指定得proccess
+pm2 stop all
+
+pm2 delete 0    通过id删除指定得proccess记录
+pm2 delete all
+
+pm2 reload all    realod一下所有
+pm2 restart 0     通过id重启指定得process
+
+pm2 monit        开启监听面板，可以查看服务得内存,cpu等情况
+
+//启动cli也可以接受一些选项参数
+--name <app_name>    启动服务所对应得name，帮助区分不同得项目
+
 ```

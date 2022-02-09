@@ -26,7 +26,7 @@
 * [web安全/防御/攻击](ji-chu-zhi-shi/web-an-quan-fang-yu-gong-ji.md)
 * [浏览器相关](ji-chu-zhi-shi/liu-lan-qi-xiang-guan.md)
 * [cookie和session](ji-chu-zhi-shi/cookie-and-session.md)
-* [nginx](ji-chu-zhi-shi/nginx.md)
+* [nginx/pm2](ji-chu-zhi-shi/nginx-pm2.md)
 * [网页渲染流程](ji-chu-zhi-shi/wang-ye-xuan-ran-liu-cheng.md)
 
 ## 实用工具使用
