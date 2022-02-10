@@ -86,7 +86,7 @@ ps -ef | grep nginx
 
 ```
 ps -ef | grep nginx            查看nginx是否有启动
-nginx                            启动nginx
+nginx                        启动nginx，没准被报错，说找不到logs日志目录，需要手动创建
 nginx -s quit                                     等待工作进程完成后，安全退出
 nginx -s stop                                     直接退出
 nginx -s reload                                   重载nginx.conf配置
