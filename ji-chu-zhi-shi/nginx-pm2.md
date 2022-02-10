@@ -75,6 +75,23 @@ cd /home/soft/nginx/nginx-1.20.2/sbin
 #将nginx添加到全局变量中，随时使用nginx指令
 ln -s /home/soft/nginx/nginx-1.20.2/sbin/nginx    /usr/local/bin     随时使用nginx
 
+可能会需要防火墙      centOS7关闭防火墙命令： systemctl stop firewalld.service
+```
+
+查看是否启动成功
+
+ps -ef | grep nginx
+
+![](<../.gitbook/assets/image (2).png>)
+
+```
+ps -ef | grep nginx            查看nginx是否有启动
+nginx                            启动nginx
+nginx -s quit                                     等待工作进程完成后，安全退出
+nginx -s stop                                     直接退出
+nginx -s reload                                   重载nginx.conf配置
+
+kill -9 18854            杀掉进程端口号，可能要杀掉不止一个master worker等等
 ```
 
 ## PM2
@@ -103,3 +120,4 @@ pm2 monit        开启监听面板，可以查看服务得内存,cpu等情况
 --name <app_name>    启动服务所对应得name，帮助区分不同得项目
 
 ```
+

@@ -6,7 +6,7 @@ description: babel是一个javascript的compiler编译器
 
 工作流程:解析输入的源码转为AST抽象语法树，对AST做转换，最后对转换后的AST做代码生成，输出转换后的代码。
 
-![](<../.gitbook/assets/image (2).png>)
+![](<../.gitbook/assets/image (2) (1).png>)
 
 babel的使用场景。就我现在有多种地方使用，浏览器，rollup,webpack,vue-cli,vite
 
