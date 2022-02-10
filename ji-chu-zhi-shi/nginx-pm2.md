@@ -1,6 +1,6 @@
 # nginx/pm2
 
-windows
+## windows/nginx
 
 ```
 tasklist /fi  "imagename eq nginx.exe"            查看nginx进程对应pid
@@ -57,9 +57,29 @@ location    /h5 {
 }
 ```
 
+## linux/nginx
+
+```
+yum install -y zlib-devel openssl-devel pcre gcc            必要环境
+mkdir -p /home/soft/nginx                                创建目录
+cd /home/soft/nginx                                进入目录
+wget http://nginx.org/download/nginx-1.20.2.tar.gz
+tar -zxvf nginx-1.20.2.tar.gz
+#此时你会发现没有sbin目录，所以无法启动,需要设置prefix路径，安装
+cd /home/soft/nginx/nginx-1.20.2                进入目录
+./configure --prefix=/home/soft/nginx/nginx-1.20.2        设置前缀
+make && make install
+cd /home/soft/nginx/nginx-1.20.2/sbin        
+./nginx -v                    即可查看当前nginx的版本(此时还要使用相对路径)
+
+#将nginx添加到全局变量中，随时使用nginx指令
+ln -s /home/soft/nginx/nginx-1.20.2/sbin/nginx    /usr/local/bin     随时使用nginx
+
+```
+
 ## PM2
 
-pm2是一个全局服务，可以帮助启动node应用程序。功能强大，统一管理。
+pm2是一个全局服务，可以帮助启动node应用程序。功能强大，统一管理。[速查文档](https://pm2.keymetrics.io/docs/usage/quick-start/)
 
 所有启动得应用程序，会有历史记录存在，可以方便下次直接启动。可以为同一个应用程序创建多个name启动记录，但是实际只能启动一个。
 
