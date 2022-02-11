@@ -107,3 +107,31 @@ npm i eslint -D
 npm i eslint-config-prettier -D
 
 然后在.eslintrc.js文件中增加到extends扩展的最后面
+
+## husky+lint-staged
+
+husky主要是扩展原生git得hook。使得每次提交时，可以动态执行命令
+
+lint-staged就是用来执行指令得，在commit代码时，会由husky得pre-commit调用lint-staged,lint-staged中可以执行各种script脚本即可
+
+安装[husky](https://typicode.github.io/husky/#/?id=install)
+
+```
+npm i husky -D 
+npx husky install            会生成.husky/ 文件目录，但是还没有pre-commit
+npx husky add .husky/pre-commit "npx lint-staged"    生成pre-commit钩子并写入调用脚本
+```
+
+安装lint-staged
+
+```
+npm i lint-staged -D
+#在package.json中配置好lint-staged将要执行得内容，lint-staged会被pre-commit中调用
+
+  "lint-staged": {
+    "{src/**/*.{js,vue,ts},index.html}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+```
