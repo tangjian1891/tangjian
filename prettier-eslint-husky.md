@@ -119,6 +119,7 @@ lint-staged就是用来执行指令得，在commit代码时，会由husky得pre-
 ```
 npm i husky -D 
 npx husky install            会生成.husky/ 文件目录，但是还没有pre-commit
+npm set-script prepare "husky install"        装入prepare，成员每次npm i时，自动载入
 npx husky add .husky/pre-commit "npx lint-staged"    生成pre-commit钩子并写入调用脚本
 ```
 
