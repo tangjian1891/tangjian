@@ -2,6 +2,10 @@
 
 ## centos/linux
 
+去官网下载社区下载对应版本,mysql->DOWNLOADS->MYSQL Community(GPL) Downloads->MySQL Community Server->选择**Red Hat Enterprise Linuxt/Oracle Linux**
+
+下载[mysql-8.0.28-1.el7.x86\_64.rpm-bundle.tar](https://dev.mysql.com/downloads/mysql/)
+
 ```
 #检验mariadb包，卸载mariadb
 rpm -qa | grep mariadb            #查询包名
@@ -42,3 +46,5 @@ flush privileges;                            #刷新一下即可
 ```
 
 **注意:推荐使用Navicat16+以上得版本连接，否则还会出现加密方式不一致无法连接问题**
+
+[linux/mysql密码忘记](https://www.cnblogs.com/black-fact/p/11613361.html)
