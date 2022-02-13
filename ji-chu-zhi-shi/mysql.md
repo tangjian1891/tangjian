@@ -48,3 +48,5 @@ flush privileges;                            #刷新一下即可
 **注意:推荐使用Navicat16+以上得版本连接，否则还会出现加密方式不一致无法连接问题**
 
 [linux/mysql密码忘记](https://www.cnblogs.com/black-fact/p/11613361.html)
+
+## Navicat16免费过期刷新
