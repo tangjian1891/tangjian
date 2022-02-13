@@ -29,6 +29,8 @@ systemctl enable mysqld;
 cat /var/log/mysqld.log | grep password		#A temporary password is generated for root@localhost: QD?2u!s:vdMd
 mysql -uroot -p
 #先reset一下密码
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pw123';	#密码就是pw123
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'root123';    #修改密码
+#可能不需要ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pw123';	#密码就是pw123
+
 
 ```
