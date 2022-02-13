@@ -27,6 +27,7 @@
 * [浏览器相关](ji-chu-zhi-shi/liu-lan-qi-xiang-guan.md)
 * [cookie和session](ji-chu-zhi-shi/cookie-and-session.md)
 * [nginx/pm2](ji-chu-zhi-shi/nginx-pm2.md)
+* [mysql](ji-chu-zhi-shi/mysql.md)
 * [网页渲染流程](ji-chu-zhi-shi/wang-ye-xuan-ran-liu-cheng.md)
 
 ## 实用工具使用
