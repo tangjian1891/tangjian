@@ -30,7 +30,13 @@ cat /var/log/mysqld.log | grep password		#A temporary password is generated for 
 mysql -uroot -p
 #先reset一下密码
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'root123';    #修改密码
-#可能不需要ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pw123';	#密码就是pw123
+#可能不需要 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pw123';	#密码就是pw123
 
+#还需要允许除localhost之外得ip地址连接
+mysql -u root -p
+use mysql;
+update user set host = '%' where user = 'root';            #更新字段
+select host, user from user;                    #查询一下
+flush privileges;                            #刷新一下即可
 
 ```
