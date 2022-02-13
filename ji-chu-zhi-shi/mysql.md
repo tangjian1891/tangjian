@@ -40,3 +40,5 @@ select host, user from user;                    #查询一下
 flush privileges;                            #刷新一下即可
 
 ```
+
+**注意:推荐使用Navicat16+以上得版本连接，否则还会出现加密方式不一致无法连接问题**
