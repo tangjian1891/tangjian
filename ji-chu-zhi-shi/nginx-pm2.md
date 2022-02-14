@@ -1,5 +1,16 @@
 # nginx/pm2
 
+## linux软链
+
+window上安装的包可以全局使用，例如node安装的。
+
+```
+linux软件需要放入到默认的 /usr/local/bin即可
+ln -s 目标文件    系统目录文件
+#针对node，npm,pm2等指令，都在node包的bin下
+ls -s  /home/soft/node/node-v16.14.0-linux-x64/bin/node /usr/local/bin/node
+```
+
 ## windows/nginx
 
 ```
