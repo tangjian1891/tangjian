@@ -54,3 +54,25 @@
 access是公众号唯一接口调用凭据，调用各接口都需要access\_token，至少512字符空间。有效期2小时。
 
 使用appid与appsecret调用接口来获取access\_token。注意:1.开启接口白名单 2."设置与开发"->"基本配置"中获取。
+
+### 接口自定义菜单（个人订阅号无权限）
+
+3个一级菜单，每个一级菜单最多包含5个二级菜单。
+
+**个人订阅号：可以通过"内容与互动"->"自定义菜单"可视化配置菜单与回复内容。**
+
+每个菜单可以有不同得交互方式。
+
+1. click:
+2. view
+3. scancode\_push
+4. scancode\_waitmsg
+5. pic\_sysphoto
+6. pic_photo_or
+7. pic\_weixin
+8. 8.location\_select
+9. media\_id
+10. view\_limited(废弃)
+11. article\_id
+12. article_view_limited
+
