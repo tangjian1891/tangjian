@@ -123,6 +123,8 @@ npm set-script prepare "husky install"        装入prepare，成员每次npm i�
 npx husky add .husky/pre-commit "npx lint-staged"    生成pre-commit钩子并写入调用脚本
 ```
 
+注意一个点：**yarn 安装是不支持 prepare 这个生命周期的，需要将 prepare 改成 postinstall**
+
 安装lint-staged
 
 ```
