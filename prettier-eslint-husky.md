@@ -112,7 +112,7 @@ npm i eslint-config-prettier -D
 
 husky主要是扩展原生git得hook。使得每次提交时，可以动态执行命令
 
-lint-staged就是用来执行指令得，在commit代码时，会由husky得pre-commit调用lint-staged,lint-staged中可以执行各种script脚本即可
+lint-staged主要是仅对暂存区的文件进行校验。因为每次都对全量文件lint，可能破坏性太大了
 
 安装[husky](https://typicode.github.io/husky/#/?id=install)
 
