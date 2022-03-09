@@ -22,6 +22,7 @@
 
 ## 基础知识
 
+* [ajax/axios](ji-chu-zhi-shi/ajax-axios.md)
 * [web安全/防御/攻击](ji-chu-zhi-shi/web-an-quan-fang-yu-gong-ji.md)
 * [浏览器相关](ji-chu-zhi-shi/liu-lan-qi-xiang-guan.md)
 * [cookie和session](ji-chu-zhi-shi/cookie-and-session.md)
