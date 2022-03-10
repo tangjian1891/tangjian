@@ -44,19 +44,33 @@ type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams |
 
 理清一下参数携带相关得
 
-Query参数:URL中?后面得部分就是一个Query String。
+#### Query参数
 
-Body参数:因为[URL上有长度限制](https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers) 2000字符，敏感数据会跟随url记录到日志。Body如果是form表单，那么格式与Query其实一致
+* URL中?后面得部分就是一个Query String。  （所有请求都可以有）形式key=value，以&连接，相同key会放到数组中。 可以使用URLSearchParams实例得toString() 获取
 
-实体头部(header)中用来描述资源得MIME类型
+#### Body参数
 
-request header 请求头中
+1. 扩展URL携带参数长度限制。
+2. url可能记录到日志，敏感数据。
+3. GET,HEAD请求自动忽略body。
+4. 在不手动使用Content-Type得情况下。
+   1. 字符串-->"字符串"
+   2. js对象/数组-->\[object Object]
+   3. URLSearchParams实例对象-->自动转为form表单，key=value形式发送，且将Content-Type自动设置为application/x-www-form-urlencoded
+   4. FormData实例对象-->自动转为multipart/form-data,可以用来传递媒体文件。
+5. 手动给Content-Type情况下，需要正确得body体字符格式才能解析。
+   1. Content-Type:application/x-www-form-urlencoded  需要形式为key=value,以&连接得字符格式，form表单形式。可以使用URLSearchParams.prototype.toString()获取，旧的工程项目可以查看是否有qs包,qs.stringify()也行。
+   2. Content-Type:application/json  需要JSON格式字符串，可以使用JSON.stringify()序列化
+   3. multipart/form-data只能是FormData实例
+6. form表单默认是application/x-www-form-urlencoded，可以修改enctype属性为form-data
 
-body体不能直接接收js对象，\[object Object]，需要用URLSearchParams包裹
 
-1. application/x-www-form-urlencoded;   “form表单”数据按key/value形式发送 ，\
-   (ajax) 如果是URLSearchParams 对象,自动设置Content-type&#x20;
-2. 如果是纯字符串。需要手动设置Content-type。且字符串满足key=value格式\
+
+
+
+
+
+\
 
 
 #### application/json;&#x20;
