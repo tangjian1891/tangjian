@@ -1,5 +1,34 @@
 # ajax/axios
 
+### HTTP
+
+#### cors
+
+FAQ
+
+检查地址是否拥有完整得**协议**，**端口号。**
+
+观察请求中得origin是否含有。
+
+观察是否含有preflight请求。
+
+**Provisional headers are show 临时请求头展示-一般是origin也就是目标地址没写全**
+
+如何开启CORS?**Acess-Control-Allow-xxx：\*   || string【】**
+
+* Access-Control-Allow-Origin:\*或指定ip。这是最基础必备
+* Access-Control-Allow-Methods:\* | string\[] &#x20;
+  * 只有GET、POST、HEAD请求不需要加 （简单请求）
+* Access-Control-Allow-Headers:\* | string\[] &#x20;
+  * 只要有自定得headers，就需要加
+  * 对于Content-Type这个header,在application/json时需要加，两个表单都不需要(简单请求)
+
+**简单请求是没有preflight预检请求得。也就是说，CORS中Origin是必备。**
+
+**另外还有两个是可选得，比如 预检请求得缓存时间，是否可以携带cookie**
+
+
+
 ### XMLHttpRequest
 
 #### 1.readyState （请求状态）
